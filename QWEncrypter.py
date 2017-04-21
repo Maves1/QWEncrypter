@@ -8,14 +8,18 @@ text = file_to_encrypt.read()
 file_to_encrypt.close()
 
 # Просто создаем пустой файл
-new_file = open('encoded.txt', 'w')
+new_file = open('encrypted.txt', 'w')
 new_file.close()
 
-encrypted_file = open('encoded.txt', 'a')
+encrypted_file = open('encrypted.txt', 'a')
 
 for letter in text:
     if letter in abc:
-        letter = abc[abc.index(letter) + 1]
+        try:
+            letter = abc[abc.index(letter) + 1]
+        except:
+            pass
+
     encrypted_file.write(letter)
 
 encrypted_file.close()
